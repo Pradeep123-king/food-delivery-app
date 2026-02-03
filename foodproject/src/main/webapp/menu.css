@@ -1,0 +1,221 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --sw-orange: #ff5200;
+    --sw-dark: #282c3f;
+    --sw-gray: #686b78;
+    --sw-bg: #fdfdfd;
+    --sw-border: #e9e9eb;
+    --sw-white: #ffffff;
+    --shadow-gentle: 0 4px 20px rgba(0, 0, 0, 0.04);
+    --shadow-hover: 0 10px 40px rgba(40, 44, 63, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background-color: var(--sw-bg);
+    color: var(--sw-dark);
+    padding: 60px 15%;
+    /* Wider margins for elegant linear layout */
+    -webkit-font-smoothing: antialiased;
+}
+
+/* 1. RESTAURANT MENU HEADER FEEL */
+/* Using body::before to create a blurred 'Header' effect without touching JSP */
+body::before {
+    content: "Menu Selection";
+    position: absolute;
+    top: 50px;
+    left: 15%;
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--sw-dark);
+}
+
+/* 2. THE LINEAR ARRANGEMENT (The "Real Restaurant" Look) */
+.menu-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 900px;
+    /* Centered for focused reading */
+    margin: 60px auto 0;
+}
+
+/* 3. THE "SIDE-BY-SIDE" MENU CARD */
+.menu-item {
+    display: flex;
+    /* Image on left, text on right */
+    align-items: flex-start;
+    background: var(--sw-white);
+    border-radius: 24px;
+    padding: 24px;
+    gap: 32px;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border-bottom: 3px solid transparent;
+    cursor: default;
+}
+
+.menu-item:hover {
+    transform: translateX(10px);
+    /* Slides slightly right on hover for WOW effect */
+    border-bottom: 3px solid var(--sw-orange);
+    box-shadow: var(--shadow-hover);
+}
+
+/* 4. IMAGE FOCUSED LOOK */
+.menu-img-box {
+    flex-shrink: 0;
+    /* Keeps image size locked */
+    width: 200px;
+    height: 160px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
+}
+
+.menu-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.menu-item:hover .menu-img-box img {
+    transform: scale(1.15);
+}
+
+/* 5. CONTENT AREA ALIGNMENT */
+.menu-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding-right: 20px;
+}
+
+/* Title Alphabet, Weight, Color Sync */
+.menu-content h3 {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--sw-dark);
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+}
+
+/* Description Refinement */
+.menu-content p:not(.price) {
+    font-size: 15px;
+    color: var(--sw-gray);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    max-width: 90%;
+}
+
+/* Price - Elegant Branding */
+.price {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--sw-dark);
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.price::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background: var(--sw-orange);
+    border-radius: 2px;
+}
+
+/* 6. THE "ADD" BUTTON - Professional Sidebar Style */
+/* Positioning it to the right for a clean linear flow */
+.menu-content form {
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.add-to-cart-btn {
+    padding: 12px 30px;
+    border: 1px solid var(--sw-orange);
+    background: var(--sw-white);
+    color: var(--sw-orange);
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.add-to-cart-btn:hover {
+    background: var(--sw-orange);
+    color: white;
+    box-shadow: 0 10px 20px rgba(255, 82, 0, 0.2);
+}
+
+/* ENTRANCE ANIMATION (Continuous Flow) */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.menu-item {
+    animation: slideInUp 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) backwards;
+    position: relative;
+}
+
+/* STAGGERED REVEAL */
+.menu-item:nth-child(n) {
+    animation-delay: calc(var(--i, 0) * 0.1s);
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 992px) {
+    body {
+        padding: 40px 5%;
+    }
+
+    .menu-item {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .menu-img-box {
+        width: 100%;
+        height: 220px;
+    }
+
+    .menu-content form {
+        position: relative;
+        right: auto;
+        top: auto;
+        transform: none;
+        margin-top: 15px;
+    }
+
+    .add-to-cart-btn {
+        width: 100%;
+    }
+}
