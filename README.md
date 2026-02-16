@@ -3,7 +3,7 @@ A full-stack food delivery web application built using Java, JSP, Servlets, JDBC
 
 ## ✨ Features  
 
-🔹 **Navigation Bar**  
+**🔹 Navigation Bar**  
 - Fully responsive design  
 - Links for Home, Restaurants, Profile, and Login  
 
