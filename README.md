@@ -63,16 +63,23 @@ A full-stack food delivery web application built using Java, JSP, Servlets, JDBC
 - **HTML, CSS**  
 - **Apache Tomcat Server**
 
-**📌 How to Run**
+## 📌 How to Run
+
 1.Clone repository
+
 2.Import project into Eclipse/IntelliJ
+
 3.Configure Tomcat
+
 4.Set up MySQL database
+
 5.Run application on server
+
 6.Open browser → http://localhost:8081/foodproject/Restaurants
 
 
-**📞 Contact**
+## 📞 Contact
+
 If you want to connect, feel free to reach out on LinkedIn. https://www.linkedin.com/in/pradeep-pradi-a23861344/
 
 ⭐ If you like this project, don’t forget to star the repo!
